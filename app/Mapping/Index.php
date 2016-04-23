@@ -19,13 +19,27 @@ class Index extends Endpoint
     public function GET()
     {
         $status = true;
+        $heatmap = null;
 
-        $query = $this->db->query('SELECT * FROM mapping');
-        $heatmap = $query->fetchAll(\PDO::FETCH_OBJ);
+        $symptom = $this->request->query->get('symptom');
+        if ($symptom != null) {
+            $query = $this->db->prepare('SELECT * FROM mapping WHERE `symptom_id` = ?');
+            $status = $query->execute([$symptom]);
+            $heatmap = $query->fetchAll(\PDO::FETCH_OBJ);
+        } else {
+            $query = $this->db->query('SELECT * FROM mapping');
+            $heatmap = $query->fetchAll(\PDO::FETCH_OBJ);
+        }
 
-        return new JsonResponse(array(
-            'status' => $status,
-            'heatmap' => $heatmap
-        ));
+        if ($status) {
+            return new JsonResponse(array(
+                'status' => $status,
+                'heatmap' => $heatmap
+            ));
+        } else {
+            return new JsonResponse(array(
+                'status' => $status,
+            ));
+        }
     }
 }
