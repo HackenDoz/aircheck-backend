@@ -34,6 +34,11 @@ class Endpoint
         ));
     }
 
+    protected function getJSON()
+    {
+        return json_decode($this->request->getContent());
+    }
+
     public function GET()
     {
         return $this->createError('Invalid request method for this endpoint');

@@ -19,10 +19,4 @@ $injector->define('PDO', [
     ':passwd' => $config['db']['pass']
 ]);
 
-$injector->share('PhpAmqpLib\Connection\AMQPStreamConnection');
-$injector->define('PhpAmqpLib\Connection\AMQPStreamConnection', [
-    ':host' => 'localhost'
-]);
-
-
 return $injector;

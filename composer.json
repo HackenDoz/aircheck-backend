@@ -3,8 +3,7 @@
   "require": {
     "filp/whoops": "2.1.*",
     "symfony/http-foundation": "^3.0",
-    "rdlowrey/auryn": "^1.4",
-    "php-amqplib/php-amqplib": "^2.6"
+    "rdlowrey/auryn": "^1.4"
   },
   "autoload": {
     "psr-4": {

@@ -4,6 +4,7 @@ namespace App\Example;
 
 use Framework\Endpoint;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class Index extends Endpoint
 {
@@ -12,6 +13,7 @@ class Index extends Endpoint
         $schema = array(
             'ayy' => 'lmao'
         );
+        
         return new JsonResponse($schema);
     }
 }
