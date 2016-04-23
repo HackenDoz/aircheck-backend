@@ -28,4 +28,12 @@ class Index extends Endpoint
             'symptoms' => $symptoms
         ));
     }
+
+    public function POST()
+    {
+        return new JsonResponse(array(
+            'status' => false,
+            'message' => "This feature is waiting on completion."
+        ));
+    }
 }
