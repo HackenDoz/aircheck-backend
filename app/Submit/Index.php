@@ -21,7 +21,7 @@ class Index extends Endpoint
         $status = true;
 
         $data = $this->getJSON();
-        foreach ($data->symptoms as $id => $severity) {
+        foreach ($data->symptoms as $highd => $severity) {
             $query = $this->db->prepare("INSERT INTO reports (`latitude`, `longitude`, `symptom_id`, `severity`) VALUE (?, ?, ?, ?)");
             $status = $status && $query->execute([$data->latitude, $data->longitude, $id, $severity]);
         }
