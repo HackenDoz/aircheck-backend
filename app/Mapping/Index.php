@@ -22,6 +22,7 @@ class Index extends Endpoint
         $heatmap = null;
 
         $symptom = $this->request->query->get('symptom');
+        
         if ($symptom != null) {
             $query = $this->db->prepare('SELECT * FROM mapping WHERE `symptom_id` = ?');
             $status = $query->execute([$symptom]);
