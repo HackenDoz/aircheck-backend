@@ -8,4 +8,9 @@ $config['db']['user']   = "aircheck";
 $config['db']['pass']   = "test";
 $config['db']['dbname'] = "aircheck";
 
+$config['queue']['host'] = "localhost";
+$config['queue']['port'] = "5672";
+$config['queue']['user'] = "aircheck";
+$config['queue']['pass'] = "test";
+
 return $config;

@@ -65,11 +65,16 @@ class API
         $args = explode('/', self::$request, 4);
 
         // Pass to router, get our Model
-        $model = Router::identify($args, $this->config);
+        try {
+            $model = Router::identify($args, $this->config);
+        } catch (\Exception $e) {
+            $model['namespace'] = 'App\Error';
+        }
 
         if (class_exists($model['namespace'])) {
             if ($controller = $this->injector->make($model['namespace'])) {
                 $response = call_user_func_array(array($controller, self::$method), array());
+
             } else {
                 $response = new JsonResponse(array('error' => 'Failed to create controller.'), 404);
             }
