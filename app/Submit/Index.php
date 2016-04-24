@@ -29,5 +29,6 @@ class Index extends Endpoint
         return new JsonResponse(array(
             'status' => $status
         ));
+        
     }
 }

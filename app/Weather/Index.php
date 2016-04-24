@@ -19,8 +19,7 @@ class Index extends Endpoint
     public function GET()
     {
         $status = true;
-
-D
+        
         $query = $this->db->query('SELECT * FROM weather');
         $weather = $query->fetchAll(\PDO::FETCH_OBJ);
 
